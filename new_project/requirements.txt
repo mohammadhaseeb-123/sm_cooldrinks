@@ -1,5 +1,7 @@
 Django>=5.0
 gunicorn
 whitenoise
-mysqlclient
 python-dotenv
+dj-database-url
+django-cockroachdb
+psycopg2-binary
