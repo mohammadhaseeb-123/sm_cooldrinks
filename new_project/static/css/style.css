@@ -1,0 +1,580 @@
+
+/* =====================================================
+   GLOBAL RESET & BASE COLORS
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left, #0f172a, #020617 60%);
+    color: #e5e7eb;
+}
+/* =====================================================
+   this body is for grey colour
+===================================================== */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left, #cfe9dc, #0b1120 65%);
+    color: #e5e7eb;
+}
+
+
+/* =====================================================
+   DASHBOARD APP SHELL
+===================================================== */
+.app-shell {
+    display: flex;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    padding: 24px 14px;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(8px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.sidebar-logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-nav a {
+    padding: 8px 12px;
+    color: #e5e7eb;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+.main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 28px;
+}
+
+
+/* =====================================================
+   FLASH MESSAGES
+===================================================== */
+.messages {
+    list-style: none;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #86efac;
+}
+
+
+/* =====================================================
+   DASHBOARD HEADER & STATS
+===================================================== */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    padding: 14px;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* =====================================================
+   DASHBOARD FORMS & CARDS
+===================================================== */
+.main-row {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.form-row input {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.primary-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+.table-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-card th,
+.table-card td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.low-stock {
+    background: rgba(239, 68, 68, 0.12);
+}
+
+.actions-cell {
+    display: flex;
+    gap: 8px;
+}
+
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+/* =====================================================
+   LOGIN PAGE (FIXED)
+===================================================== */
+.login-body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #cfe9dc, #0b1120 65%);
+}
+
+/* Card container */
+.login-wrapper {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.login-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 420px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* Left image */
+.login-image-side {
+    position: relative;
+    overflow: hidden;
+}
+
+.login-image-side img {
+    width: 90%;
+    height: 80%;
+}
+
+/* Overlay text on image */
+.login-brand-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: #ffffff;
+}
+
+.login-brand-overlay h2 {
+    margin-bottom: 4px;
+}
+
+/* Right form */
+.login-form-side {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-subtitle {
+    color: #cbd5f5;
+    margin-bottom: 16px;
+}
+
+.back-link {
+    margin-top: 14px;
+    text-decoration: none;
+    color: #93c5fd;
+}
+
+
+/* =====================================================
+   LANDING PAGE (PUBLIC)
+===================================================== */
+
+.public-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 28px;
+    background: rgba(2, 6, 23, 0.7);
+    align-items: center;
+}
+
+.public-logo {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.public-logo img {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 2px solid rgba(59, 130, 246, 0.7);
+}
+
+.public-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.public-nav a {
+    color: #f8fafc;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.public-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.login-chip {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 32px;
+    gap: 20px;
+}
+.hero-points {
+    display: flex;              /* all in one row */
+    gap: 16px;                  /* space between points */
+    list-style: none;           /* remove bullets */
+    padding: 0;
+    margin-top: 12px;
+}
+
+.hero-points li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #e5e7eb;
+    white-space: nowrap;        /* prevent wrapping */
+}
+
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* ================================
+   SECTIONS
+================================ */
+.section {
+    padding: 26px;
+}
+
+/* =====================================================
+   GALLERY – CONTINUOUS INFINITE CAROUSEL (NO GAPS)
+===================================================== */
+/* =====================================================
+   GALLERY – 60% VIEWPORT HEIGHT HORIZONTAL CAROUSEL
+===================================================== */
+
+/* =====================================================
+   GALLERY – 60vh CAROUSEL WITH GAP + BORDER
+===================================================== */
+/* =====================================================
+   SEAMLESS INFINITE CAROUSEL (NO EMPTY SPACE)
+===================================================== */
+
+.carousel {
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: max-content;
+    animation: scrollGallery 25s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel-track img {
+    height: 100%;
+    max-height: 60vh;
+    width: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 14px;
+}
+
+/* 🔁 KEY: move ONLY HALF the track */
+@keyframes scrollGallery {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+/* ================================
+   MAP & CONTACT
+================================ */
+.map-container iframe {
+    width: 100%;
+    height: 360px;
+    border-radius: 12px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.contact-card {
+    background: rgba(255,255,255,0.04);
+    padding: 14px;
+    border-radius: 10px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+.public-footer {
+    text-align: center;
+    padding: 18px;
+    color: #94a3b8;
+    background: rgba(2, 6, 23, 0.5);
+}
+
+/* ================================
+   MEDIA QUERIES
+================================ */
+@media (max-width: 1023px) {
+    .hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 767px) {
+    .carousel-track img {
+        width: 180px;
+        height: 130px;
+    }
+}
+
+
+/* =====================================================
+   MEDIA QUERIES
+===================================================== */
+
+/* Tablet (<= 1024px) */
+@media (max-width: 1024px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .hero {
+        padding: 28px;
+        gap: 16px;
+    }
+
+    .hero-points {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .carousel {
+        height: 50vh;
+    }
+
+    .carousel-track img {
+        max-height: 50vh;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+
+    .login-card {
+        height: 380px;
+    }
+}
+
+
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 22px;
+        gap: 14px;
+    }
+
+    .hero-text h2 {
+        font-size: 20px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .hero-points {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .carousel {
+        height: 45vh;
+    }
+
+    .carousel-track img {
+        max-height: 45vh;
+    }
+
+    .map-container iframe {
+        height: 240px;
+    }
+
+    .login-wrapper {
+        max-width: 100%;
+        padding: 14px;
+    }
+
+    .login-card {
+        height: 340px;
+    }
+}
+
+
+/* Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+
+    body {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 18px;
+    }
+
+    .hero-text h2 {
+        font-size: 18px;
+    }
+
+    .hero-points li {
+        font-size: 11px;
+    }
+
+    .carousel {
+        height: 40vh;
+    }
+
+    .carousel-track img {
+        max-height: 40vh;
+    }
+
+    .login-card {
+        height: 320px;
+    }
+}

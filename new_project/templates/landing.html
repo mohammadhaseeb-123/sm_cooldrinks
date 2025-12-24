@@ -1,0 +1,132 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SM Cool General Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="public-body">
+
+<header class="public-header">
+    <div class="public-logo">
+        <img src="{% static 'shop_logo.jpg' %}" alt="SM Cool Logo">
+        <div>
+            <h1>SM Cool General Store</h1>
+            <p>Daily essentials • Groceries • Household items</p>
+        </div>
+    </div>
+
+    <nav class="public-nav">
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+        <a href="{% url 'login' %}" class="login-chip">Shopkeeper Login</a>
+    </nav>
+</header>
+
+<!-- =====================================================
+     PUBLIC PAGE WRAPPER (CRITICAL FIX)
+===================================================== -->
+<main class="public-page">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Your friendly neighborhood store in Nambur</h2>
+            <p>Fresh groceries, home essentials, snacks, and more – all in one place.</p>
+            <ul class="hero-points">
+                <li>✔ Quality products</li>
+                <li>✔ Fair prices</li>
+                <li>✔ Convenient location</li>
+            </ul>
+        </div>
+
+        <div class="hero-image">
+            <img src="{% static 'shop_main_pic.jpg' %}" alt="Shop Front">
+        </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section about-section">
+        <h3>About SM Cool</h3>
+        <p>
+            SM Cool General Store serves the local community in Nambur with a wide range of groceries,
+            dairy, household items, and personal care products.
+        </p>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery" class="section store-gallery">
+        <h3>Store Gallery</h3>
+
+        <div class="carousel">
+            <div class="carousel-track">
+                <!-- Original images -->
+                <img src="{% static 'shop_gem_1.jpg' %}" alt="Shop Inside 1">
+                <img src="{% static 'shop_gem_2.jpg' %}" alt="Shop Inside 2">
+                <img src="{% static 'shop_inside.jpg' %}" alt="Shop Shelves">
+
+                <!-- Duplicates for infinite loop -->
+                <img src="{% static 'shop_gem_1.jpg' %}" alt="">
+                <img src="{% static 'shop_gem_2.jpg' %}" alt="">
+                <img src="{% static 'shop_inside.jpg' %}" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section id="location" class="section">
+        <h3>Find Us on the Map</h3>
+        <p>We are located in Nambur, Guntur, Andhra Pradesh, India.</p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239.26990363464955!2d80.53200555273936!3d16.35773205632644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f5b096706af1%3A0x437a42f345641c83!2sSm%20xerox%20and%20net%20centre!5e0!3m2!1sen!2sin!4v1765622834627!5m2!1sen!2sin"
+                width="100%" height="320"
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section contact-section">
+        <h3>Contact & Timings</h3>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h4>Contact</h4>
+                <p><strong>Phone:</strong> +91-9030543689</p>
+                <p><strong>Email:</strong> smcooldrinks@gmail.com</p>
+            </div>
+
+            <div class="contact-card">
+                <h4>Address</h4>
+                <p>SM Cool General Store</p>
+                <p>Boddurai Center, Nambur</p>
+                <p>Guntur, Andhra Pradesh, India</p>
+            </div>
+
+            <div class="contact-card">
+                <h4>Store Timings</h4>
+                <p>Mon – Sat: 7:00 AM – 9:30 PM</p>
+                <p>Sun: 8:00 AM – 9:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="public-footer">
+    © {{ now|date:"Y" }} SM Cool General Store · All rights reserved
+</footer>
+
+</body>
+</html>

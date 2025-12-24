@@ -1,0 +1,73 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login – SM Cool Inventory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    
+</head>
+
+<body class="login-body">
+
+<div class="login-wrapper">
+    <div class="login-card">
+
+        <!-- LEFT IMAGE -->
+        <div class="login-image-side">
+            <img src="{% static 'shop_logo.jpg' %}" alt="Store Image">
+            <div class="login-brand-overlay">
+                <h2>SM Cool General Store</h2>
+                <p> Secure inventory panel for shopkeeper.</p>
+            </div>
+        </div>
+
+        <!-- RIGHT FORM -->
+        <div class="login-form-side">
+            <h2>Shopkeeper Login</h2>
+            <p class="login-subtitle">
+                Only authorized users can access the dashboard.
+            </p>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+
+                <div class="form-row">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+
+                <button type="submit" class="primary-btn">Login</button>
+            </form>
+
+            <!-- <p class="login-hint">
+                Admin: use superuser account<br>
+                Client: use user created in admin panel
+            </p> -->
+
+            <a href="{% url 'landing' %}" class="back-link">
+                ← Back to Store Page
+            </a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

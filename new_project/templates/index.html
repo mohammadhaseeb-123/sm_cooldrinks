@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="top-header">
+    <div>
+        <h1>Inventory Dashboard</h1>
+        <p>Manage stock levels for SM Cool General Store.</p>
+    </div>
+    <div class="store-info">
+        <span class="store-name">SM Cool General Store</span>
+        <span class="store-tag">Nambur,Guntur</span>
+    </div>
+</div>
+
+<div class="stats-row">
+    <div class="stat-card">
+        <h4>Total Products</h4>
+        <p>{{ total_products }}</p>
+    </div>
+    <div class="stat-card">
+        <h4>Total Stock</h4>
+        <p>{{ total_stock }}</p>
+    </div>
+    <div class="stat-card">
+        <h4>Low Stock (&lt; 10)</h4>
+        <p>{{ low_stock_items }}</p>
+    </div>
+    <div class="stat-card">
+        <h4>Categories</h4>
+        <p>{{ categories_count }}</p>
+    </div>
+</div>
+
+<div class="main-row">
+    <!-- Add Product -->
+    <div class="card add-card">
+        <h3>➕ Add New Product</h3>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="add_product">
+
+            <div class="form-row">
+                <label>Product Name</label>
+                <input type="text" name="name" placeholder="Enter product name" required>
+            </div>
+            <div class="form-row">
+                <label>Category</label>
+                <input type="text" name="category" placeholder="e.g. Dairy, Snacks" required>
+            </div>
+            <div class="form-row">
+                <label>Initial Quantity</label>
+                <input type="number" name="quantity" min="0" required>
+            </div>
+            <div class="form-row">
+                <label>Price</label>
+                <input type="number" step="0.01" name="price" required>
+            </div>
+            <button type="submit" class="primary-btn">Add Product</button>
+        </form>
+    </div>
+
+    <!-- Inventory table -->
+    <div class="card table-card">
+        <h3>📦 Inventory Management</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Low?</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr class="{% if product.is_low_stock %}low-stock{% endif %}">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>₹{{ product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        {% if product.is_low_stock %}
+                            🔴 Low
+                        {% else %}
+                            ✅ OK
+                        {% endif %}
+                    </td>
+                    <td class="actions-cell">
+                        <!-- Decrease -->
+                        <form method="post" action="{% url 'change_quantity' product.id 'dec' %}">
+                            {% csrf_token %}
+                            <button type="submit">−</button>
+                        </form>
+
+                        <!-- Increase -->
+                        <form method="post" action="{% url 'change_quantity' product.id 'inc' %}">
+                            {% csrf_token %}
+                            <button type="submit">+</button>
+                        </form>
+
+                        <!-- Delete (FIXED: POST instead of GET) -->
+                        <form method="post"
+                              action="{% url 'delete_product' product.id %}"
+                              onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            {% csrf_token %}
+                            <button type="submit" class="danger-btn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No products yet. Add something on the left.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
