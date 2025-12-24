@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sm_cool',
+    'new_project.sm_cool',
 ]
 
 # --------------------------------------------------
