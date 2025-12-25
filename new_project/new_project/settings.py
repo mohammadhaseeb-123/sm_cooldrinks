@@ -60,7 +60,7 @@ MIDDLEWARE = [
 # --------------------------------------------------
 # URLS & WSGI
 # --------------------------------------------------
-ROOT_URLCONF = 'new_project.urls'
+ROOT_URLCONF = 'new_project.new_project.urls'
 WSGI_APPLICATION = 'new_project.wsgi.application'
 
 # --------------------------------------------------
