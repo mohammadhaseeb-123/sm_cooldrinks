@@ -47,7 +47,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # your app
-    path('', include("new_project.sm_cool.urls")),
+    path('', include("sm_cool.urls")),
+
 
     # temporary public admin-creation endpoints (REMOVE AFTER USE)
     path("run/migrate/", run_migrations),
