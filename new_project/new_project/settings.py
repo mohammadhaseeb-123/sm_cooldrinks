@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sm_cool.apps.SmCoolConfig', # <-- Correct app path
+    'new_project.sm_cool.apps.SmCoolConfig', # <-- Correct app path
 ]
 
 # --------------------------------------------------
