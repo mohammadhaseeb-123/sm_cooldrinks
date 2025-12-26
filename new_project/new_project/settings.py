@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'new_project.sm_cool.apps.SmCoolConfig', # <-- Correct app path
+    'sm_cool.apps.SmCoolConfig',   # <-- Correct app path
 ]
 
 # --------------------------------------------------
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 # --------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Required for static on Render
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # required for static files on Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -79,12 +79,12 @@ TEMPLATES = [
 ]
 
 # --------------------------------------------------
-# DATABASE – Render (Cockroach / PostgreSQL)
+# DATABASE (CockroachDB or PostgreSQL via DATABASE_URL)
 # --------------------------------------------------
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv("DATABASE_URL"),
-        engine='django_cockroachdb'
+        engine='django_cockroachdb',
     )
 }
 
@@ -118,9 +118,8 @@ USE_TZ = True
 # --------------------------------------------------
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'   # <---- REQUIRED for Render
+STATIC_ROOT = BASE_DIR / 'staticfiles'       # where collectstatic stores files
 
-# Whitenoise compression
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # --------------------------------------------------
