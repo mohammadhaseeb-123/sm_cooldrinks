@@ -28,29 +28,29 @@ urlpatterns = [
 from django.contrib import admin
 from django.urls import path, include
 
-# Temporary management functions (for FREE deployment – no Shell required)
+# Temporary migration/admin endpoint
 from django.core.management import call_command
 from django.http import HttpResponse
 
 def run_migrations(request):
     call_command("migrate")
-    return HttpResponse("✓ Migrations completed. Database is ready.")
+    return HttpResponse("✔ Migration Done")
 
 def create_admin(request):
     from django.contrib.auth.models import User
     if not User.objects.filter(username="admin").exists():
         User.objects.create_superuser("admin", "admin@example.com", "Admin@123")
-        return HttpResponse("✓ Admin created → username: admin / password: Admin@123")
-    return HttpResponse("⚠ Admin already exists.")
+        return HttpResponse("✔ Admin Created → username: admin / pwd: Admin@123")
+    return HttpResponse("⚠ Admin already exists")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include("sm_cool.urls")),  # correct app
+]
 
-    # your app
-    path('', include("sm_cool.urls")),
-
-
-    # temporary public admin-creation endpoints (REMOVE AFTER USE)
+# Enable these only until admin is created on Render
+urlpatterns += [
     path("run/migrate/", run_migrations),
     path("run/createadmin/", create_admin),
 ]
+
