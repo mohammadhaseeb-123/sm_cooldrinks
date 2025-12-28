@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # your app
-    'sm_cool.apps.SmCoolConfig',  # <-- Correct
+    'sm_cool',  # <-- Correct
 ]
 
 
