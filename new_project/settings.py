@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # your app
-    'sm_cool',  # <-- Correct
+    'sm_cool',
 ]
 
 
@@ -57,9 +57,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',  # Global templates folder
+            BASE_DIR / 'templates',
         ],
-        'APP_DIRS': True,  # Enables templates inside sm_cool/templates/
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -73,18 +73,25 @@ TEMPLATES = [
 
 
 # ---------------- DATABASE ----------------
-# If running on Render
+# Render CockroachDB
 if os.getenv("RENDER"):
     import dj_database_url
+
     DATABASES = {
-        'default': dj_database_url.config(
+        "default": dj_database_url.config(
             default=os.getenv("DATABASE_URL"),
-            engine="django_cockroachdb"
+            conn_health_checks=True
         )
     }
+
+    # Force SSL for CockroachDB
+    DATABASES["default"]["OPTIONS"] = {
+        "sslmode": "verify-full",
+        "sslrootcert": "system"
+    }
+
+# Local development
 else:
-    # ---- LOCAL ----
-    # Use SQLite if requested
     if os.getenv("USE_SQLITE", "False") == "True":
         DATABASES = {
             "default": {
@@ -92,7 +99,7 @@ else:
                 "NAME": BASE_DIR / "db.sqlite3",
             }
         }
-    else:  # MySQL local default
+    else:
         DATABASES = {
             "default": {
                 "ENGINE": "django.db.backends.mysql",
