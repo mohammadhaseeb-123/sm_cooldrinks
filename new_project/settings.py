@@ -80,11 +80,11 @@ if os.getenv("RENDER"):
         "default": dj_database_url.config(
             default=os.getenv("DATABASE_URL"),
             conn_health_checks=True,
-            ssl_require=True    # <--- IMPORTANT FIX
+            ssl_require=True
         )
     }
 
-# ▶ Local (MySQL or SQLite)
+# Local system
 else:
     if os.getenv("USE_SQLITE", "False") == "True":
         DATABASES = {
