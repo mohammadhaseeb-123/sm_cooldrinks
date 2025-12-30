@@ -48,8 +48,8 @@ def create_admin(request):
 
 # ------------------ URLS ------------------ #
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("sm_cool.urls")),   # main app URLs
+    # path('admin/', admin.site.urls),
+    # path('', include("sm_cool.urls")),   # main app URLs
 ]
 
 # ⚠️ ENABLE ONLY UNTIL FIRST LOGIN & MIGRATION
