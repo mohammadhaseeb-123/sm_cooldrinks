@@ -57,9 +57,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            BASE_DIR / 'templates',  # Global templates folder
         ],
-        'APP_DIRS': True,
+        'APP_DIRS': True,  # Enables templates inside sm_cool/templates/
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -73,24 +73,18 @@ TEMPLATES = [
 
 
 # ---------------- DATABASE ----------------
-# Render CockroachDB
+# ▶ Render (CockroachDB)
 if os.getenv("RENDER"):
     import dj_database_url
-
     DATABASES = {
         "default": dj_database_url.config(
             default=os.getenv("DATABASE_URL"),
-            conn_health_checks=True
+            conn_health_checks=True,
+            ssl_require=True    # <--- IMPORTANT FIX
         )
     }
 
-    # Force SSL for CockroachDB
-    DATABASES["default"]["OPTIONS"] = {
-        "sslmode": "verify-full",
-        "sslrootcert": "system"
-    }
-
-# Local development
+# ▶ Local (MySQL or SQLite)
 else:
     if os.getenv("USE_SQLITE", "False") == "True":
         DATABASES = {
